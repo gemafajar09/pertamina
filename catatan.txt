@@ -1,0 +1,15 @@
+- installasi plugin matwebsite
+    composer require maatwebsite/excel
+
+- buat file import
+    php artisan make:import UserImport --model=Userapp
+        * UserImport adalah nama file import yang akan dibuat dan pastikan awalan huruf besar
+        * --model=Userapp berfungsi untuk menghubungkan file import ke model Appuser atau model yang akan di gunakan
+
+- buat file export
+    php artisan make:export UserExport --model=Userapp
+        * UserExport adalah nama file export yang akan dibuat dan pastikan awalan huruf besar
+        * --model=Userapp berfungsi untuk menghubungkan file import ke model Appuser atau model yang akan di gunakan
+
+- publish plugin matwebsite
+    php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
