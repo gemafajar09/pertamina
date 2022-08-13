@@ -29,6 +29,10 @@ Route::group(
         // pangkalan
         Route::get('pangkalan',[PangkalanController::class,'index'])->name('pangkalan');
         Route::get('pangkalan-form',[PangkalanController::class,'add'])->name('pangkalan-form');
+        Route::post('pangkalan-simpan',[PangkalanController::class,'simpan'])->name('pangkalan-simpan');
+        Route::post('pangkalan-update',[PangkalanController::class,'update'])->name('pangkalan-update');
+        Route::get('pangkalan-edit/{id}',[PangkalanController::class,'edit'])->name('pangkalan-edit');
+        Route::get('pangkalan-hapus/{id}',[PangkalanController::class,'hapus'])->name('pangkalan-hapus');
         
         // agen
         Route::get('agen',[AgenController::class,'index'])->name('agen');

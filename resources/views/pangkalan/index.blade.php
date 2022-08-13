@@ -39,7 +39,9 @@ Pangkalan
                         <td>{{$a->kode_pos}}</td>
                         <td>{{$a->alamat}}</td>
                         <td>{{$a->status}}</td>
-                        <td>X</td>
+                        <td> <a  href="{{route('pangkalan-edit',$a->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a  href="{{route('pangkalan-hapus',$a->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
