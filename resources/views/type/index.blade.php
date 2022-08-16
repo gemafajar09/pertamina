@@ -115,16 +115,28 @@ Type Pangkalan
     }
 
     function hapus(id){
-        $.ajax({
-            url: "{{url('type-hapus')}}/"+id,
-            type: "GET",
-            dataType: "json",
-            success: function(data){
-                if (data) {
-                    window.location.reload();
-                }
-            }
+        swal({
+            title: "Yakin Inign Hapus Data?",
+            text: "Silahkan lanjutkan jika yakin menghapus data!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{url('type-hapus')}}/"+id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data){
+                        if (data) {
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+        });
+        
     }
 </script>
 @endsection

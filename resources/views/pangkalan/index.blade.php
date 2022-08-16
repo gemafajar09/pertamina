@@ -39,8 +39,9 @@ Pangkalan
                         <td>{{$a->kode_pos}}</td>
                         <td>{{$a->alamat}}</td>
                         <td>{{$a->status}}</td>
-                        <td> <a  href="{{route('pangkalan-edit',$a->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                            <a  href="{{route('pangkalan-hapus',$a->id)}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        <td> 
+                            <a  href="{{route('pangkalan-edit',$a->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a  href="#" role="button" onclick="hapus('{{$a->id}}')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -66,24 +67,38 @@ Pangkalan
     </div>
 </div>
 
+@if(Auth::user()->level == 'AGEN')
 <div class="floating-container">
     <a href="{{route('pangkalan-form')}}">
         <div class="floating-button">+</div>
     </a>
-    <!-- <div class="element-container">
-
-        <a href="google.com"> 
-            <span class="float-element tooltip-left">
-                <i class="material-icons">phone
-                </i></a>
-        </span>
-        <span class="float-element">
-            <i class="material-icons">email
-            </i>
-        </span>
-        <span class="float-element">
-            <i class="material-icons">chat</i>
-        </span>
-    </div> -->
 </div>
+@endif
+
+<script>
+    function hapus(id){
+        swal({
+            title: "Yakin Inign Hapus Data?",
+            text: "Silahkan lanjutkan jika yakin menghapus data!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{url('pangkalan-hapus')}}/"+id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data){
+                        if (data) {
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+        });
+        
+    }
+</script>
 @endsection

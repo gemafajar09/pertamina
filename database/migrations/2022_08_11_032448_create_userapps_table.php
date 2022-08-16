@@ -21,7 +21,10 @@ class CreateUserappsTable extends Migration
             $table->string('telpon');
             $table->integer('id_provinsi')->nullable();
             $table->integer('id_kabupaten')->nullable();
-            $table->enum('level',['ADMIN','APROVAL','AGEN']);
+            $table->string('mor')->nullable();
+            $table->string('sold_to')->nullable();
+            $table->text('alamat')->nullable();
+            $table->enum('level',['SUPER ADMIN','ADMIN APROVAL','AGEN']);
             $table->timestamps();
         });
     }

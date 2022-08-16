@@ -20,14 +20,19 @@ Agen
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($agen as $a)
                     <tr>
-                        <td>Trident</td>
-                        <td>Internet Explorer 4.0</td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>Trident</td>
-                        <td>x</td>
+                        <td>{{$a->sold_to}}</td>
+                        <td>{{$a->nama}}</td>
+                        <td>{{$a->mor}}</td>
+                        <td>{{$a->provinsi}}</td>
+                        <td>{{$a->kabupaten}}</td>
+                        <td>
+                            <a href="{{route('agen-edit',$a->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                            <a href="#" role="button" onclick="hapus('{{$a->id }}')" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                        </td>
                     </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
@@ -49,4 +54,31 @@ Agen
         <div class="floating-button">+</div>
     </a>
 </div>
+
+<script>
+    function hapus(id){
+        swal({
+            title: "Yakin Inign Hapus Data?",
+            text: "Silahkan lanjutkan jika yakin menghapus data!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: "{{url('agen-hapus')}}/"+id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data){
+                        if (data) {
+                            window.location.reload();
+                        }
+                    }
+                })
+            }
+        });
+        
+    }
+</script>
 @endsection

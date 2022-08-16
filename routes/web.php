@@ -25,6 +25,7 @@ Route::group(
 
         // aproval
         Route::get('aproval',[AprovalController::class,'index'])->name('aproval');
+        Route::post('aproval-up',[AprovalController::class,'updates'])->name('aproval-up');
         
         // pangkalan
         Route::get('pangkalan',[PangkalanController::class,'index'])->name('pangkalan');
@@ -37,7 +38,9 @@ Route::group(
         // agen
         Route::get('agen',[AgenController::class,'index'])->name('agen');
         Route::get('agen-add',[AgenController::class,'add'])->name('agen-add');
-        Route::post('agen-simpan',[AgenController::class,'simpan'])->name('agen-simpan');
+        Route::post('agen-simpan/{id?}',[AgenController::class,'simpan'])->name('agen-simpan');
+        Route::get('agen-edit/{id}',[AgenController::class,'edit'])->name('agen-edit');
+        Route::get('agen-hapus/{id}',[AgenController::class,'hapus'])->name('agen-hapus');
         
         // type
         Route::get('type',[TypeController::class,'index'])->name('type');

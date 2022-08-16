@@ -45,7 +45,6 @@ class PangkalanController extends Controller
             "no_hp" => "required",
             "idKabupaten" => "required",
             "kelurahan" => "required",
-            "status" => "required",
             "alamat" => "required"
 
         ]);
@@ -65,7 +64,7 @@ class PangkalanController extends Controller
         $data['kelurahan'] = $request->kelurahan;
         $data['kode_pos'] = $request->kode_pos;
         $data['alamat'] = $request->alamat;
-        $data['status'] = $request->status;
+        $data['status'] = 'TIDAK AKTIF';
 
         $simpan = DB::table('pangkalans')->insert($data);
         // dd($simpan);
@@ -100,7 +99,7 @@ class PangkalanController extends Controller
         if ($cek->fails()) {
             return back()->withErrors($cek)->withInput();
         }
-        $data['id'] = $request->id;
+
         $data['id_registrasi'] = $request->id_register;
         $data['nama_pangkalan'] = $request->nama_pangkalan;
         $data['telpon_kantor'] = $request->telpon_kantor;
@@ -113,28 +112,9 @@ class PangkalanController extends Controller
         $data['kelurahan'] = $request->kelurahan;
         $data['kode_pos'] = $request->kode_pos;
         $data['alamat'] = $request->alamat;
-        $data['status'] = $request->status;
 
-        // $simpan = DB::table('pangkalans')->insert($data);
-        // dd($simpan);
-        $update = DB::table('pangkalans')->where('id', $data['id'])
-            ->update(
-                [
-                    'id_registrasi' => $data['id_registrasi'],
-                    'nama_pangkalan' => $data['nama_pangkalan'],
-                    'telpon_kantor' => $data['telpon_kantor'],
-                    'nama_pemilik' => $data['nama_pemilik'],
-                    'nik' => $data['nik'],
-                    'no_hp' => $data['no_hp'],
-                    'provinsi' => $data['provinsi'],
-                    'kabupaten' => $data['kabupaten'],
-                    'kecamatan' => $data['kecamatan'],
-                    'kelurahan' => $data['kelurahan'],
-                    'kode_pos' => $data['kode_pos'],
-                    'alamat' => $data['alamat'],
-                    'status' => $data['status']
-                ],
-            );
+        $update = DB::table('pangkalans')->where('id', $request->id)
+            ->update($data);
 
         if ($update) {
             return redirect('pangkalan')->with('success', 'Berhasil');
@@ -142,12 +122,9 @@ class PangkalanController extends Controller
             return back()->with('error', 'Gagal');
         }
     }
+
     public function hapus($id){
         $hapus = DB::table('pangkalans')->where('id', $id)->delete();
-        if($hapus){
-            return redirect('pangkalan')->with('success', 'Berhasil');
-        }else{
-            return back()->with('error', 'Gagal');
-        }
+        return response()-json($hapus);
     }
 }

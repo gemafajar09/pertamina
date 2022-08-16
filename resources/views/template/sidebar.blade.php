@@ -16,6 +16,7 @@
                     </a>
                 </li>
                 <!-- data Admin Aprovals -->
+                @if(Auth::user()->level == 'SUPER ADMIN')
                 <li class="nav-item">
                     <a href="{{route('user')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
@@ -24,6 +25,20 @@
                         </p>
                     </a>
                 </li>
+                @endif
+
+                @if(Auth::user()->level == 'SUPER ADMIN')
+                <li class="nav-item">
+                    <a href="{{route('agen')}}" class="nav-link">
+                        <i class="nav-icon fas fa-user"></i>
+                        <p>
+                            Agen NSPO
+                        </p>
+                    </a>
+                </li>
+                @endif
+
+                @if(Auth::user()->level == 'ADMIN APROVAL'  || Auth::user()->level == 'SUPER ADMIN')
                 <li class="nav-item">
                     <a href="{{route('aproval')}}" class="nav-link">
                         <i class="nav-icon fas fa-check"></i>
@@ -32,9 +47,19 @@
                         </p>
                     </a>
                 </li>
+                @endif
 
                 <!-- data punya Agen -->
+                @if(Auth::user()->level == 'AGEN' || Auth::user()->level == 'SUPER ADMIN')
                 <li class="nav-item">
+                    <a href="{{route('pangkalan')}}" class="nav-link">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>
+                            Pangkalan
+                        </p>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
@@ -62,8 +87,10 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
+                @endif
 
+                @if(Auth::user()->level == 'AGEN' || Auth::user()->level == 'SUPER ADMIN')
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-upload"></i>
@@ -82,6 +109,7 @@
                         </p>
                     </a>
                 </li>
+                @endif
             </ul>
         </nav>
     </div>

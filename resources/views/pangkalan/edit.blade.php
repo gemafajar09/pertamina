@@ -64,18 +64,20 @@ Edit Pangkalan
                             <input type="text" name="kelurahan" value="{{$pangkalan->kelurahan}}" id="kelurahan" placeholder="Kelurahan" class="form-control">
                         </div>
                         <div class="form-group">
+                            <label for="">Alamat</label>
+                            <textarea name="alamat" id="alamat" class="form-control">{{$pangkalan->alamat}}</textarea>
+                        </div>
+
+                        <!-- <div class="form-group">
                             <label for="">Status</label>
                             <select name="status" id="status" class="form-control">
                                 <option value="AKTIF" {{($pangkalan->status) == 'AKTIF' ? 'Selected' : '' }}>AKTIF</option>
                                 <option value="TIDAK AKTIF" {{($pangkalan->status) == 'TIDAK AKTIF' ? 'Selected' : '' }}>TIDAK AKTIF</option>
                             </select>
-                        </div>
+                        </div> -->
                     </div>
 
-                    <div class="col-md-12">
-                        <label for="">Alamat</label>
-                        <textarea name="alamat" id="alamat" class="form-control">{{$pangkalan->alamat}}</textarea>
-                    </div>
+                    
 
                 </div>
                 <br><br>
