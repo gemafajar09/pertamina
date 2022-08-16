@@ -10,6 +10,9 @@ use App\Http\Controllers\{
     TypeController,
     ProvinsiController,
     KabupatenController,
+    KecamatanController,
+    KelurahanController,
+    
 };
 
 Route::group(
@@ -58,6 +61,16 @@ Route::group(
         Route::get('kabupaten',[KabupatenController::class,'index'])->name('kabupaten');
         Route::post('kabupaten-add/{id?}',[KabupatenController::class,'create'])->name('kabupaten-add');
         Route::get('kabupaten-hapus/{id?}',[KabupatenController::class,'hapus'])->name('kabupaten-hapus');
+
+        // kecamatan
+        Route::get('kecamatan',[KecamatanController::class,'index'])->name('kecamatan');
+        Route::post('kecamatan-add/{id?}',[KecamatanController::class,'create'])->name('kecamatan-add');
+        Route::get('kecamatan-hapus/{id?}',[KecamatanController::class,'hapus'])->name('kecamatan-hapus');
+
+        // Kelurahan
+        Route::get('kelurahan',[KelurahanController::class,'index'])->name('kelurahan');
+        Route::post('kelurahan-add/{id?}',[KelurahanController::class,'create'])->name('kelurahan-add');
+        Route::get('kelurahan-hapus/{id?}',[KelurahanController::class,'hapus'])->name('kelurahan-hapus');
 
         // user
         Route::get('user', [UserController::class,'user'])->name('user');
