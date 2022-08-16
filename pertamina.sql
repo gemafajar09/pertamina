@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Waktu pembuatan: 13 Agu 2022 pada 07.26
+-- Waktu pembuatan: 16 Agu 2022 pada 07.47
 -- Versi server: 5.7.36
 -- Versi PHP: 7.4.26
 
@@ -609,7 +609,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 DROP TABLE IF EXISTS `pangkalans`;
 CREATE TABLE IF NOT EXISTS `pangkalans` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `id_type` int(11) NOT NULL,
+  `id_type` int(11) DEFAULT NULL,
   `id_registrasi` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_pangkalan` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telpon_kantor` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -623,10 +623,19 @@ CREATE TABLE IF NOT EXISTS `pangkalans` (
   `kode_pos` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `keterangan` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `pangkalans`
+--
+
+INSERT INTO `pangkalans` (`id`, `id_type`, `id_registrasi`, `nama_pangkalan`, `telpon_kantor`, `nama_pemilik`, `nik`, `no_hp`, `provinsi`, `kabupaten`, `kecamatan`, `kelurahan`, `kode_pos`, `alamat`, `status`, `keterangan`, `created_at`, `updated_at`) VALUES
+(1, NULL, '123123123', 'PT Amnah Raya 1', '0851645878', 'Hamzah', '13711040296004', '082122855458', '3', '67', 'padang', 'padang selatan', '-', 'jalan raya lubuk minturun rt 05\r\njalan raya lubuk minturun', 'AKTIF', 'Diterima', NULL, NULL),
+(2, NULL, '1313123123', 'Voluptatem in sapien', '08554465421', 'Itaque irure omnis q', '21551145165165', '0851524424', '3', '67', 'Officiis provident', 'Asperiores officiis', 'Consequuntur pariatu', 'Quas ab error fuga', 'TIDAK AKTIF', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -783,7 +792,7 @@ CREATE TABLE IF NOT EXISTS `user_apps` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `user_apps`
@@ -791,8 +800,9 @@ CREATE TABLE IF NOT EXISTS `user_apps` (
 
 INSERT INTO `user_apps` (`id`, `nama`, `email`, `password`, `telpon`, `id_provinsi`, `id_kabupaten`, `mor`, `sold_to`, `alamat`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'ADMINISTRATOR', 'admin@gmail.com', '$2y$10$Az7dXw9KgZcXoaXq9TaPpeBWLowSCnTkDP4yz78uD6hyRbtBfhkZS', '082122855458', 35, 476, NULL, NULL, NULL, 'SUPER ADMIN', NULL, NULL, NULL),
-(2, 'gema fajar', 'gemafajar09@gmail.com', '$2y$10$N0pYdpZE4o1qGjSJ2N6DpuEXrkiLRnj1TulaJXIkZIqY6v6bovk.W', '085162658554', 3, 67, NULL, NULL, NULL, 'ADMIN APROVAL', NULL, NULL, NULL),
-(3, 'PT Aziz Mulya', 'aziz@gmail.com', '$2y$10$UZkzlCGD316tVqJPw.QwleQEXyUUgy68hh/eZFTUqIQ3I1CUpt.Dq', NULL, 3, 67, '1', '175485', 'padang', 'AGEN', NULL, NULL, NULL);
+(2, 'gema fajar', 'gemafajar09@gmail.com', '$2y$10$Az7dXw9KgZcXoaXq9TaPpeBWLowSCnTkDP4yz78uD6hyRbtBfhkZS', '085162658554', 3, 67, NULL, NULL, NULL, 'ADMIN APROVAL', NULL, NULL, NULL),
+(3, 'PT Aziz Mulya', 'aziz@gmail.com', '$2y$10$Az7dXw9KgZcXoaXq9TaPpeBWLowSCnTkDP4yz78uD6hyRbtBfhkZS', NULL, 3, 67, '1', '175485', 'padang', 'AGEN', NULL, NULL, NULL),
+(4, 'PT Imam Mulya', 'imam@gmail.com', '$2y$10$nXJAJe4.Tu/ydawZzGh8O.1oy7d7JKmf60gFtq/SGGAjD4EkpDIIm', NULL, 3, 67, '2', '123456', 'padang', 'AGEN', NULL, NULL, NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
