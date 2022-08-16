@@ -36,6 +36,42 @@
                         </p>
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{route('provinsi')}}" class="nav-link">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>
+                            Provinsi
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('kabupaten')}}" class="nav-link">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>
+                            Kabupaten / Kota
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('pangkalan')}}" class="nav-link">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>
+                            Kecamatan
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('pangkalan')}}" class="nav-link">
+                        <i class="nav-icon fas fa-city"></i>
+                        <p>
+                            Kelurahan
+                        </p>
+                    </a>
+                </li>
                 @endif
 
                 @if(Auth::user()->level == 'ADMIN APROVAL'  || Auth::user()->level == 'SUPER ADMIN')
@@ -91,14 +127,14 @@
                 @endif
 
                 @if(Auth::user()->level == 'AGEN' || Auth::user()->level == 'SUPER ADMIN')
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-upload"></i>
                         <p>
                             Upload Lapoan
                         </p>
                     </a>
-                </li>
+                </li> -->
 
                 <!-- admin -->
                 <li class="nav-item">
