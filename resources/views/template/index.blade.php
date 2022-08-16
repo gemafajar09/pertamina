@@ -17,10 +17,30 @@
 
 <body class="hold-transition sidebar-mini sidebar-collapse">
     <script src="{{asset('/')}}plugins/jquery/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="{{asset('img/pertamina.png')}}" width="250" alt="Pertamina">
     </div>
     <div class="wrapper">
+        @if(Session('success'))
+            <script>
+                swal({
+                    title: "{{Session('success')}}", 
+                    timer:"3000",
+                    icon: "success",
+                });
+            </script>
+        @endif
+        @if(Session('error'))
+            <script>
+                swal({
+                    title: "{{Session('error')}}", 
+                    timer:"3000",
+                    icon: "error",
+                });
+            </script>
+        @endif
 
         @include('template.navbar')
 

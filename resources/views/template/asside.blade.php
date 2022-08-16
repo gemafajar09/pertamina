@@ -4,7 +4,7 @@
             <img src="img/avatar.png" class="img-circle" style="width:120px; height:120px;" alt="">
         </center>
         <center style="margin-top:8px">
-            <h5>Jon Sabu</h5>
+            <h5>{{Auth::user()->nama}}</h5>
         </center>
         <hr style="border:1px solid #000;">
         <ul class="list-group">

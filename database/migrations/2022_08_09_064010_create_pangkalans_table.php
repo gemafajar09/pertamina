@@ -29,6 +29,7 @@ class CreatePangkalansTable extends Migration
             $table->string('kode_pos');
             $table->string('alamat');
             $table->string('status');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
