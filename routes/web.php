@@ -7,7 +7,9 @@ use App\Http\Controllers\{
     AprovalController,
     PangkalanController,
     AgenController,
-    TypeController
+    TypeController,
+    ProvinsiController,
+    KabupatenController,
 };
 
 Route::group(
@@ -46,6 +48,16 @@ Route::group(
         Route::get('type',[TypeController::class,'index'])->name('type');
         Route::post('type-add/{id?}',[TypeController::class,'create'])->name('type-add');
         Route::get('type-hapus/{id?}',[TypeController::class,'hapus'])->name('type-hapus');
+        
+        // provinsi
+        Route::get('provinsi',[ProvinsiController::class,'index'])->name('provinsi');
+        Route::post('provinsi-add/{id?}',[ProvinsiController::class,'create'])->name('provinsi-add');
+        Route::get('provinsi-hapus/{id?}',[ProvinsiController::class,'hapus'])->name('provinsi-hapus');
+        
+        // kabupaten
+        Route::get('kabupaten',[KabupatenController::class,'index'])->name('kabupaten');
+        Route::post('kabupaten-add/{id?}',[KabupatenController::class,'create'])->name('kabupaten-add');
+        Route::get('kabupaten-hapus/{id?}',[KabupatenController::class,'hapus'])->name('kabupaten-hapus');
 
         // user
         Route::get('user', [UserController::class,'user'])->name('user');
