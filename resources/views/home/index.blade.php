@@ -117,7 +117,7 @@ Dashboard
 
         var barChartOptions = {
             responsive: true,
-            maintainAspectRatio: false,
+            maintainAspectRatio:  false,
             datasetFill: false
         }
 

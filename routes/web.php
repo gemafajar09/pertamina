@@ -10,6 +10,7 @@ use App\Http\Controllers\{
     TypeController,
     ProvinsiController,
     KabupatenController,
+    LaporanController,
     KecamatanController,
     KelurahanController,
     
@@ -61,6 +62,9 @@ Route::group(
         Route::get('kabupaten',[KabupatenController::class,'index'])->name('kabupaten');
         Route::post('kabupaten-add/{id?}',[KabupatenController::class,'create'])->name('kabupaten-add');
         Route::get('kabupaten-hapus/{id?}',[KabupatenController::class,'hapus'])->name('kabupaten-hapus');
+
+        // laporan
+        Route::get('laporan', [LaporanController::class,'index'])->name('laporan');
 
         // kecamatan
         Route::get('kecamatan',[KecamatanController::class,'index'])->name('kecamatan');
