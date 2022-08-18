@@ -19,6 +19,7 @@ class PangkalanController extends Controller
     {
         $data['provinsi'] = DB::table('provinsis')->where('id', Auth::user()->id_provinsi)->first();
         $data['kabupaten'] = DB::table('kabupatens')->where('id', Auth::user()->id_kabupaten)->first();
+        $data['kecamatan'] = DB::table('kecamatans')->where('id_kabupaten', $data['kabupaten']->id)->get();
         return view('pangkalan.tambah', $data);
     }
 

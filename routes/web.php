@@ -10,7 +10,10 @@ use App\Http\Controllers\{
     TypeController,
     ProvinsiController,
     KabupatenController,
-    LaporanController
+    LaporanController,
+    KecamatanController,
+    KelurahanController,
+    
 };
 
 Route::group(
@@ -62,6 +65,17 @@ Route::group(
 
         // laporan
         Route::get('laporan', [LaporanController::class,'index'])->name('laporan');
+
+        // kecamatan
+        Route::get('kecamatan',[KecamatanController::class,'index'])->name('kecamatan');
+        Route::post('kecamatan-add/{id?}',[KecamatanController::class,'create'])->name('kecamatan-add');
+        Route::get('kecamatan-hapus/{id?}',[KecamatanController::class,'hapus'])->name('kecamatan-hapus');
+
+        // Kelurahan
+        Route::get('kelurahan',[KelurahanController::class,'index'])->name('kelurahan');
+        Route::post('kelurahan-add/{id?}',[KelurahanController::class,'create'])->name('kelurahan-add');
+        Route::get('kelurahan-hapus/{id?}',[KelurahanController::class,'hapus'])->name('kelurahan-hapus');
+
         // user
         Route::get('user', [UserController::class,'user'])->name('user');
         Route::get('user-add', [UserController::class,'addUser'])->name('user-add');

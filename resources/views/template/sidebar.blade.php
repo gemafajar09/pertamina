@@ -56,7 +56,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('pangkalan')}}" class="nav-link">
+                    <a href="{{route('kecamatan')}}" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Kecamatan
@@ -65,7 +65,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{route('pangkalan')}}" class="nav-link">
+                    <a href="{{route('kelurahan')}}" class="nav-link">
                         <i class="nav-icon fas fa-city"></i>
                         <p>
                             Kelurahan

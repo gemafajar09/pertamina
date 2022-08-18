@@ -32,7 +32,13 @@ Tambah Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kecamatan</label>
-                            <input type="text" name="kecamatan" id="kecamatan" value="{{old('kecamatan')}}" placeholder="Kecamatan" class="form-control">
+                            <select name="kecamatan" id="kecamatan" class="form-control">
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach($kecamatan as $a)
+                                <option value="{{$a->id}}" onclick="">{{$a->kecamatan}}</option>
+                                @endforeach
+                            </select>
+                            {{-- <input type="text" name="kecamatan" id="kecamatan" value="{{old('kecamatan')}}" placeholder="Kecamatan" class="form-control"> --}}
                         </div>
                         <div class="form-group">
                             <label for="">Kode POS</label>
@@ -60,6 +66,7 @@ Tambah Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan</label>
+                          
                             <input type="text" name="kelurahan" value="{{old('kelurahan')}}" id="kelurahan" placeholder="Kelurahan" class="form-control">
                         </div>
                         <div class="form-group">
@@ -87,4 +94,5 @@ Tambah Pangkalan
         </form>
     </div>
 </div>
+
 @endsection
