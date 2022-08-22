@@ -1,7 +1,7 @@
 <aside class="control-sidebar control-sidebar-light" style="height:320px; border-bottom-left-radius:15px;">
     <div class="p-3">
         <center>
-            <img src="img/avatar.png" class="img-circle" style="width:120px; height:120px;" alt="">
+            <img src="{{asset('img/avatar.png')}}" class="img-circle" style="width:120px; height:120px;" alt="">
         </center>
         <center style="margin-top:8px">
             <h5>{{Auth::user()->nama}}</h5>

@@ -11,7 +11,11 @@ class PangkalanController extends Controller
 {
     public function index()
     {
-        $data['pangkalan'] = DB::table('pangkalans')->get();
+        $data['pangkalan'] = DB::table('pangkalans')
+        ->join('kecamatans','kecamatans.id','pangkalans.kecamatan')
+        ->join('kelurahans','kelurahans.id','pangkalans.kelurahan')
+        ->select('pangkalans.*','kecamatans.kecamatan','kelurahans.kelurahan')
+        ->get();
         return view('pangkalan.index', $data);
     }
 
@@ -25,10 +29,12 @@ class PangkalanController extends Controller
 
     public function edit($id)
     {
-        $data['provinsi'] = DB::table('provinsis')->where('id', Auth::user()->id_provinsi)->first();
-        $data['kabupaten'] = DB::table('kabupatens')->where('id', Auth::user()->id_kabupaten)->first();
-        $data['pangkalan'] = DB::table('pangkalans')->where('id', $id)->first();
-
+        $cek = DB::table('pangkalans')->where('id', $id)->first();
+        $data['provinsi'] = DB::table('provinsis')->where('id', $cek->provinsi)->first();
+        $data['kabupaten'] = DB::table('kabupatens')->where('id', $cek->kabupaten)->first();
+        $data['kecamatan'] = DB::table('kecamatans')->where('id_kabupaten', $cek->kabupaten)->get();
+        $data['kelurahan'] = DB::table('kelurahans')->where('id_kecamatan', $cek->kecamatan)->get();
+        $data['pangkalan'] = $cek;
         return view('pangkalan.edit', $data);
     }
 
@@ -127,5 +133,12 @@ class PangkalanController extends Controller
     public function hapus($id){
         $hapus = DB::table('pangkalans')->where('id', $id)->delete();
         return response()-json($hapus);
+    }
+
+    public function getKelurahan($id)
+    {
+        $data['kelurahan'] = DB::table('kelurahans')->where('id', $id)->get();
+
+        return view('pangkalan.kelurahan', $data);
     }
 }

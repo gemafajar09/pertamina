@@ -33,7 +33,12 @@ Edit Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kecamatan</label>
-                            <input type="text" name="kecamatan" id="kecamatan" value="{{$pangkalan->kecamatan}}" placeholder="Kecamatan" class="form-control">
+                            <select name="kecamatan" id="kecamatan" onchange="kelurahans(this)" class="form-control">
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach($kecamatan as $kec)
+                                <option value="{{$kec->id}}" onclick="">{{$kec->kecamatan}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Kode POS</label>
@@ -61,23 +66,18 @@ Edit Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan</label>
-                            <input type="text" name="kelurahan" value="{{$pangkalan->kelurahan}}" id="kelurahan" placeholder="Kelurahan" class="form-control">
+                            <select name="kelurahan" id="kelurahan" class="form-control">
+                                <option value="">Pilih Kelurahan</option>
+                                @foreach($kelurahan as $ak)
+                                <option value="{{$ak->id}}" onclick="">{{$ak->kelurahan}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
                             <textarea name="alamat" id="alamat" class="form-control">{{$pangkalan->alamat}}</textarea>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="">Status</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="AKTIF" {{($pangkalan->status) == 'AKTIF' ? 'Selected' : '' }}>AKTIF</option>
-                                <option value="TIDAK AKTIF" {{($pangkalan->status) == 'TIDAK AKTIF' ? 'Selected' : '' }}>TIDAK AKTIF</option>
-                            </select>
-                        </div> -->
                     </div>
-
-                    
 
                 </div>
                 <br><br>
@@ -88,4 +88,22 @@ Edit Pangkalan
         </form>
     </div>
 </div>
+
+<script>
+    function kelurahans(id){
+        $.ajax({
+            url: '{{url('kelurahan-get')}}/'+id.value,
+            type: 'get',
+            dataType: 'html',
+            success: function (res) {
+                $('#kelurahan').html(res)
+            }
+        })
+    }
+
+    $(document).ready(function () {
+        $('#kelurahan').val('{{$pangkalan->kelurahan}}')
+        $('#kecamatan').val('{{$pangkalan->kecamatan}}')
+    })
+</script>
 @endsection
