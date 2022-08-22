@@ -64,7 +64,9 @@ Route::group(
         Route::get('kabupaten-hapus/{id?}',[KabupatenController::class,'hapus'])->name('kabupaten-hapus');
 
         // laporan
-        Route::get('laporan', [LaporanController::class,'index'])->name('laporan');
+        Route::get('laporan/{agen?}/{dari?}/{sampai?}', [LaporanController::class,'index'])->name('laporan');
+        Route::get('format-laporan', [LaporanController::class,'formatexcel'])->name('format-laporan');
+        Route::post('upload-laporan', [LaporanController::class,'uploadexcel'])->name('upload-laporan');
 
         // kecamatan
         Route::get('kecamatan',[KecamatanController::class,'index'])->name('kecamatan');
@@ -75,6 +77,7 @@ Route::group(
         Route::get('kelurahan',[KelurahanController::class,'index'])->name('kelurahan');
         Route::post('kelurahan-add/{id?}',[KelurahanController::class,'create'])->name('kelurahan-add');
         Route::get('kelurahan-hapus/{id?}',[KelurahanController::class,'hapus'])->name('kelurahan-hapus');
+        Route::get('kelurahan-get/{id?}',[PangkalanController::class,'getKElurahan'])->name('kelurahan-get');
 
         // user
         Route::get('user', [UserController::class,'user'])->name('user');

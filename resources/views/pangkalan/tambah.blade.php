@@ -32,13 +32,12 @@ Tambah Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kecamatan</label>
-                            <select name="kecamatan" id="kecamatan" class="form-control">
+                            <select name="kecamatan" id="kecamatan" onchange="kelurahans(this)" class="form-control">
                                 <option value="">Pilih Kecamatan</option>
                                 @foreach($kecamatan as $a)
                                 <option value="{{$a->id}}" onclick="">{{$a->kecamatan}}</option>
                                 @endforeach
                             </select>
-                            {{-- <input type="text" name="kecamatan" id="kecamatan" value="{{old('kecamatan')}}" placeholder="Kecamatan" class="form-control"> --}}
                         </div>
                         <div class="form-group">
                             <label for="">Kode POS</label>
@@ -66,24 +65,13 @@ Tambah Pangkalan
                         </div>
                         <div class="form-group">
                             <label for="">Kelurahan</label>
-                          
-                            <input type="text" name="kelurahan" value="{{old('kelurahan')}}" id="kelurahan" placeholder="Kelurahan" class="form-control">
+                            <select name="kelurahan" id="kelurahan" class="form-control"></select>
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
                             <textarea name="alamat" id="alamat" class="form-control"></textarea>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="">Status</label>
-                            <select name="status" id="status" class="form-control">
-                                <option value="AKTIF">AKTIF</option>
-                                <option value="TIDAK AKTIF">TIDAK AKTIF</option>
-                            </select>
-                        </div> -->
-                    </div>
-
-                    
+                    </div>                 
 
                 </div>
                 <br><br>
@@ -94,5 +82,18 @@ Tambah Pangkalan
         </form>
     </div>
 </div>
+
+<script>
+    function kelurahans(id){
+        $.ajax({
+            url: '{{url('kelurahan-get')}}/'+id.value,
+            type: 'get',
+            dataType: 'html',
+            success: function (res) {
+                $('#kelurahan').html(res)
+            }
+        })
+    }
+</script>
 
 @endsection

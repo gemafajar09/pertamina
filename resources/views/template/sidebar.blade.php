@@ -83,6 +83,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('laporan')}}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Lapoan Agen
+                        </p>
+                    </a>
+                </li>
                 @endif
 
                 <!-- data punya Agen -->
@@ -126,15 +134,7 @@
                 </li> -->
                 @endif
 
-                @if(Auth::user()->level == 'AGEN' || Auth::user()->level == 'SUPER ADMIN')
-                <!-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-upload"></i>
-                        <p>
-                            Upload Lapoan
-                        </p>
-                    </a>
-                </li> -->
+                @if(Auth::user()->level == 'AGEN')
 
                 <!-- admin -->
                 <li class="nav-item">
