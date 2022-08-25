@@ -28,10 +28,14 @@ Route::group(
     function () {
         Route::get('home', [HomeController::class,'index'])->name('home');
         Route::post('logout', [UserController::class,'logout'])->name('logout');
+        Route::get('profile', [UserController::class,'profile'])->name('profile');
+        Route::post('ganti-password/{id}', [UserController::class,'gantipassword'])->name('ganti-password');
+        Route::post('edit-user/{id}', [UserController::class,'upuser'])->name('edit-user');
 
         // aproval
         Route::get('aproval',[AprovalController::class,'index'])->name('aproval');
         Route::post('aproval-up',[AprovalController::class,'updates'])->name('aproval-up');
+        Route::get('cek-aproval/{id}',[AprovalController::class,'cek'])->name('cek-aproval');
         
         // pangkalan
         Route::get('pangkalan',[PangkalanController::class,'index'])->name('pangkalan');
@@ -67,6 +71,8 @@ Route::group(
         Route::get('laporan/{agen?}/{dari?}/{sampai?}', [LaporanController::class,'index'])->name('laporan');
         Route::get('format-laporan', [LaporanController::class,'formatexcel'])->name('format-laporan');
         Route::post('upload-laporan', [LaporanController::class,'uploadexcel'])->name('upload-laporan');
+        Route::post('export-laporan', [LaporanController::class,'exportexcel'])->name('export-laporan');
+        Route::get('hapus-laporan/{id}', [LaporanController::class,'hapuslaporan'])->name('hapus-laporan');
 
         // kecamatan
         Route::get('kecamatan',[KecamatanController::class,'index'])->name('kecamatan');

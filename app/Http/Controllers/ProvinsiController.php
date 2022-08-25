@@ -26,7 +26,7 @@ class ProvinsiController extends Controller
     }
 
     public function hapus($id){
-        $hapus = DB::table('provinsi')->where('id', $id)->delete();
+        $hapus = DB::table('provinsis')->where('id', $id)->delete();
         return response()->json($hapus);
     }
 

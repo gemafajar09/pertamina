@@ -11,6 +11,7 @@ class HomeController extends Controller
     {
         $data['pangkalan'] = DB::table('pangkalans')->count();
         $data['agen'] = DB::table('user_apps')->where('level','AGEN')->count();
+        
         return view('home.index',$data);
     }
 

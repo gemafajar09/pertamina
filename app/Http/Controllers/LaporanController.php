@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\Datapangkalan;
+use App\Exports\Dataexport;
+use App\Exports\Dataexportagen;
 use App\Imports\Dataimport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -89,7 +91,7 @@ class LaporanController extends Controller
                                ->get();
             }
         }else{
-            $data['agens'] = DB::table('user_apps')->where('level','AGEN')->where('id_provinsi',Auth::user()->id_provinsi)->where('id_kabupaten',Auth::user()->id_kabupaten)->get();
+            $data['agens'] = DB::table('user_apps')->where('level','AGEN')->get();
             if($agen != 0 && $dari != null && $sampai != null){
                 $data['laporan'] = DB::table('laporans')
                                 ->join('user_apps', 'user_apps.sold_to','laporans.sold_to')
@@ -126,5 +128,26 @@ class LaporanController extends Controller
             }
         }
         return view('laporan.index',$data);
+    }
+
+    public function exportexcel(Request $r){
+        if(Auth::user()->level == 'AGEN')
+        {
+            return Excel::download(new Dataexportagen(
+                $r->agen,
+                $r->dari,
+                $r->sampai), 'laporan-'.Auth::user()->nama.'.xlsx');
+        }else{
+                return Excel::download(new Dataexport(
+                $r->agen,
+                $r->dari,
+                $r->sampai 
+                ), 'laporan-'.date('Y-m-d').'.xlsx');
+        }
+    }
+
+    public function hapuslaporan($id){
+        $hapus = DB::table('laporans')->where('id', $id)->delete();
+        return response()->json($hapus);
     }
 }

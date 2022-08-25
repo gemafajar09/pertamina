@@ -89,4 +89,41 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect('/');
     }
+
+    public function profile(){
+        $data['user'] = DB::table('user_apps')
+                        ->join('provinsis','provinsis.id','user_apps.id_provinsi')
+                        ->join('kabupatens','kabupatens.id','user_apps.id_kabupaten')
+                        ->where('user_apps.id',Auth::user()->id)
+                        ->first();
+        return view('user.profile',$data);
+    }
+
+    public function gantipassword(Request $r, $id){
+        if($r->password == $r->password1){
+            $pass = Hash::make($r->password);
+            $up = DB::table('user_apps')->where('id',$id)->update(['password' => $pass]);
+            if($up){
+                return back()->with('success','Berhasil');
+            }else{
+                return back()->with('error','Periksa Kembali');
+            }
+        }else{
+            return back()->with('error','Periksa Kembali');
+        }
+    }
+    public function upuser(Request $r, $id){
+        
+        $data['nama'] = $r->nama;
+        $data['email'] = $r->email;
+        $data['telpon'] = $r->telpon;
+        $data['sold_to'] = $r->sold_to;
+        $data['alamat'] = $r->alamat;
+        $up = DB::table('user_apps')->where('id',$id)->update($data);
+        if($up){
+            return back()->with('success','Berhasil');
+        }else{
+            return back()->with('error','Periksa Kembali');
+        }
+    }
 }

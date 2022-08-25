@@ -7,6 +7,9 @@ Kabupaten
 @section('content')
 <div class="col-md-12">
     <div class="card card-primary card-outline">
+        <div class="card-header">
+            <button type="button" class="btn btn-primary" onclick="modalType()">Tambah Data</button>
+        </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -33,12 +36,6 @@ Kabupaten
             </table>
         </div>
     </div>
-</div>
-
-<div class="floating-container">
-    <a href="#" onclick="modalType()">
-        <div class="floating-button">+</div>
-    </a>
 </div>
 
 <div class="modal" id="modalType" tabindex="-1" role="dialog">

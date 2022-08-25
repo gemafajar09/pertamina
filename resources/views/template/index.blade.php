@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('/')}}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini sidebar-collapse">
+<body class="hold-transition">
     <script src="{{asset('/')}}plugins/jquery/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
@@ -100,7 +100,7 @@
         }
 
         $(function () {
-            $("#example1").DataTable({
+            $("#example2").DataTable({
                 "responsive": true, 
                 "lengthChange": false, 
                 "autoWidth": false,
@@ -108,10 +108,10 @@
                 "buttons": ["excel"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-            $('#example2').DataTable({
+            $('#example1').DataTable({
                 "paging": true,
                 "lengthChange": false,
-                "searching": false,
+                "searching": true,
                 "ordering": true,
                 "info": true,
                 "autoWidth": false,

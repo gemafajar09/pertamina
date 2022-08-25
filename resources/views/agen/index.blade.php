@@ -7,6 +7,9 @@ Agen
 @section('content')
 <div class="col-md-12">
     <div class="card card-primary card-outline">
+        <div class="card-header">
+            <a href="{{route('agen-add')}}" class="btn btn-primary">Tambah Data</a>
+        </div>
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -47,12 +50,6 @@ Agen
             </table>
         </div>
     </div>
-</div>
-
-<div class="floating-container">
-    <a href="{{route('agen-add')}}">
-        <div class="floating-button">+</div>
-    </a>
 </div>
 
 <script>

@@ -37,7 +37,7 @@
 
         <div class="flex justify-between">
             <div class="ml-5 mt-9">
-                <p>Lupa Password ? <a href="" class="text-red-500 hover:text-red-300">Klik Disini</a></p>
+                <!-- <p>Lupa Password ? <a href="" class="text-red-500 hover:text-red-300">Klik Disini</a></p> -->
             </div>
 
             <div class="mt-9 ml-5 mr-5 text-right">
