@@ -1,69 +1,117 @@
 @extends('template.index')
 
 @section('title')
-Dashboard
+    Dashboard
 @endsection
 
 @section('content')
-<div class="col-lg-6 col-6">
-    <!-- small box -->
-    <div class="small-box bg-info">
-        <div class="inner">
-            <h3>{{$pangkalan}}</h3>
+    <div class="col-lg-6 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>{{ $pangkalan }}</h3>
 
-            <p>Total Pangkalan</p>
+                <p>Total Pangkalan</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <div class="icon">
-            <i class="ion ion-bag"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
-</div>
-<!-- ./col -->
-<div class="col-lg-6 col-6">
-    <!-- small box -->
-    <div class="small-box bg-success">
-        <div class="inner">
-            <h3>{{$agen}}</h3>
+    <!-- ./col -->
+    <div class="col-lg-6 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>{{ $agen }}</h3>
 
-            <p>Total Agen</p>
+                <p>Total Agen</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
-</div>
 
-<!-- <div class="col-lg-3 col-6">
-    <div class="small-box bg-warning">
-        <div class="inner">
-            <h3>44</h3>
-
-            <p>Bright Gas</p>
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-body text-center">
+                <h5>DATA PANGKALAN YANG AKTIF</h5>
+            </div>
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID Registrasi</th>
+                            <th>Nama Pangkalan</th>
+                            <th>No Telpon Kantor</th>
+                            <th>Nama Pemilik</th>
+                            <th>No Ktp Pemilik</th>
+                            <th>No Hp Pemilik</th>
+                            <th>Provinsi</th>
+                            <th>Kabupaten /Kota</th>
+                            <th>Kecamatan</th>
+                            <th>Kelurahan</th>
+                            <th>Kode Pos</th>
+                            <th>Alamat</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($data_pangkalan_aktif as $i => $a)
+                            <tr>
+                                <td>{{ $a->id_registrasi }}</td>
+                                <td>{{ $a->nama_pangkalan }}</td>
+                                <td>{{ $a->telpon_kantor }}</td>
+                                <td>{{ $a->nama_pemilik }}</td>
+                                <td>{{ $a->nik }}</td>
+                                <td>{{ $a->no_hp }}</td>
+                                <td>{{ $a->provinsi }}</td>
+                                <td>{{ $a->kabupaten }}</td>
+                                <td>{{ $a->kecamatan }}</td>
+                                <td>{{ $a->kelurahan }}</td>
+                                <td>{{ $a->kode_pos }}</td>
+                                <td>{{ $a->alamat }}</td>
+                                <td>{{ $a->status == 'AKTIF' ? 'DISETUJUI' : 'TIDAK DISETUJUI' }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="icon">
-            <i class="ion ion-person-add"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
-</div>
 
-<div class="col-lg-3 col-6">
-    <div class="small-box bg-danger">
-        <div class="inner">
-            <h3>65</h3>
+    <!-- <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>44</h3>
 
-            <p>Unique Visitors</p>
+                <p>Bright Gas</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
-</div> -->
 
-<div class="col-md-12">
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>65</h3>
+
+                <p>Unique Visitors</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
+            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div> -->
+
+    {{-- <div class="col-md-12">
     <div class="card card-primary card-outline">
         <div class="card-header">
             <center>
@@ -128,5 +176,7 @@ Dashboard
         })
 
     })
-</script>
+</script> --}}
+
+    <!-- Untuk Data Pangkalan Yang Aktif -->
 @endsection
